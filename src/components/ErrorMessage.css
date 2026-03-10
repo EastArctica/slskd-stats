@@ -1,0 +1,28 @@
+.error {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: var(--radius);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.error p {
+  color: var(--error-color);
+  margin: 0 0 1.5rem;
+}
+
+.error button {
+  background-color: var(--error-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.error button:hover {
+  opacity: 0.9;
+}
