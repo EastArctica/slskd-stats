@@ -21,6 +21,37 @@
   font-size: 1.125rem;
 }
 
+.header.compact {
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header.compact h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.new-analysis-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.new-analysis-btn:hover {
+  background-color: var(--border-color);
+  border-color: var(--text-secondary);
+}
+
 @media (max-width: 640px) {
   .header h1 {
     font-size: 2rem;
@@ -28,5 +59,13 @@
 
   .subtitle {
     font-size: 1rem;
+  }
+
+  .header.compact {
+    padding: 0.625rem 1rem;
+  }
+
+  .header.compact h1 {
+    font-size: 1.125rem;
   }
 }

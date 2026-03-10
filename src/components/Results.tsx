@@ -1,32 +1,61 @@
 import type { AnalysisResult } from "../types";
+import { formatBytes, formatNumber } from "../utils/format";
 import { GlobalStatsSection } from "./GlobalStats";
-import { TopUsersByFilesTable, TopUsersBySizeTable } from "./TopUsersTable";
+import {
+	TopUsersByFilesTable,
+	TopUsersBySizeTable,
+	TopUploadersByFilesTable,
+	TopUploadersBySizeTable,
+} from "./TopUsersTable";
+import { SearchableUsersTable } from "./SearchableUsersTable";
+import { TransferStates } from "./TransferStates";
+import { FileExtensions } from "./FileExtensions";
 import "./Results.css";
 
 interface ResultsProps {
 	result: AnalysisResult;
-	fileName: string | null;
-	onAnalyzeAnother: () => void;
 }
 
-export function Results({ result, fileName, onAnalyzeAnother }: ResultsProps) {
+export function Results({ result }: ResultsProps) {
 	return (
 		<div className="results">
-			<div className="results-header">
-				<h2>Analysis Results</h2>
-				{fileName && <p className="file-name">{fileName}</p>}
-				<button
-					type="button"
-					className="analyze-new"
-					onClick={onAnalyzeAnother}
-				>
-					Analyze Another File
-				</button>
+			<section className="stats-section global-stats-compact">
+				<GlobalStatsSection stats={result.global} />
+			</section>
+
+			<TransferStates states={result.transferStates} />
+
+			<div className="stats-row">
+				<TopUsersByFilesTable users={result.topByFiles} />
+				<TopUsersBySizeTable users={result.topBySize} />
 			</div>
 
-			<GlobalStatsSection stats={result.global} />
-			<TopUsersByFilesTable users={result.topByFiles} />
-			<TopUsersBySizeTable users={result.topBySize} />
+			<div className="stats-row">
+				<TopUploadersByFilesTable users={result.topUploadersByFiles} />
+				<TopUploadersBySizeTable users={result.topUploadersBySize} />
+			</div>
+
+			<section className="stats-section">
+				<h3>File Statistics</h3>
+				<div className="file-stats-grid">
+					<div className="file-stat-card">
+						<span className="file-stat-label">Average File Size</span>
+						<span className="file-stat-value">
+							{formatBytes(result.averageFileSize)}
+						</span>
+					</div>
+					<div className="file-stat-card">
+						<span className="file-stat-label">Unique Files</span>
+						<span className="file-stat-value">
+							{formatNumber(result.uniqueFiles)}
+						</span>
+					</div>
+				</div>
+			</section>
+
+			<FileExtensions extensions={result.topExtensions} />
+
+			<SearchableUsersTable users={result.allUsers} />
 		</div>
 	);
 }

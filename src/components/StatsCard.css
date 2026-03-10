@@ -1,8 +1,16 @@
 .stat-card {
   background-color: var(--bg-secondary);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  border-left: 4px solid;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  border-left: 3px solid;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
 }
 
 .stat-card.downloads {
@@ -14,8 +22,8 @@
 }
 
 .stat-card h4 {
-  margin: 0 0 1rem;
-  font-size: 1.125rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -24,8 +32,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   border-bottom: 1px solid var(--border-color);
+  font-size: 0.8125rem;
 }
 
 .stat-row:last-child {
@@ -34,7 +43,6 @@
 
 .stat-label {
   color: var(--text-secondary);
-  font-size: 0.875rem;
 }
 
 .stat-value {

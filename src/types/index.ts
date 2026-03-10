@@ -25,8 +25,37 @@ export interface TopUserBySize {
 	fileCount: number;
 }
 
+export interface UserStats {
+	username: string;
+	downloadFiles: number;
+	downloadBytes: number;
+	uploadFiles: number;
+	uploadBytes: number;
+	ratio: number | null;
+}
+
+export interface TransferStates {
+	completed: { downloads: number; uploads: number };
+	failed: { downloads: number; uploads: number };
+	cancelled: { downloads: number; uploads: number };
+	inProgress: { downloads: number; uploads: number };
+}
+
+export interface FileExtension {
+	extension: string;
+	count: number;
+	totalBytes: number;
+}
+
 export interface AnalysisResult {
 	global: GlobalStats;
 	topByFiles: TopUserByFiles[];
 	topBySize: TopUserBySize[];
+	topUploadersByFiles: TopUserByFiles[];
+	topUploadersBySize: TopUserBySize[];
+	allUsers: UserStats[];
+	transferStates: TransferStates;
+	topExtensions: FileExtension[];
+	averageFileSize: number;
+	uniqueFiles: number;
 }

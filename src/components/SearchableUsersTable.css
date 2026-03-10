@@ -1,0 +1,127 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-count {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.table-container.scrollable {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Fancy scrollbar */
+.table-container.scrollable::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-container.scrollable::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+.table-container.scrollable::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  border-radius: 4px;
+  border: 2px solid var(--bg-tertiary);
+}
+
+.table-container.scrollable::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-color) 100%);
+}
+
+/* Firefox scrollbar */
+.table-container.scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--bg-tertiary);
+}
+
+.table-container.scrollable thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.data-table.users-table th,
+.data-table.users-table td {
+  padding: 0.75rem 1rem;
+}
+
+.data-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.data-table th.sortable:hover {
+  color: var(--text-primary);
+}
+
+.sort-indicator {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.sort-indicator.active {
+  color: var(--primary-light);
+}
+
+.good-ratio {
+  color: var(--upload-color);
+}
+
+.bad-ratio {
+  color: var(--error-color);
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-count {
+    text-align: right;
+  }
+
+  .table-container.scrollable {
+    max-height: 400px;
+  }
+
+  .data-table.users-table {
+    font-size: 0.8125rem;
+  }
+
+  .data-table.users-table th,
+  .data-table.users-table td {
+    padding: 0.625rem 0.5rem;
+  }
+}

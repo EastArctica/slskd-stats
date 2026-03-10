@@ -1,0 +1,77 @@
+.extensions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.extension-card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  border-left: 3px solid var(--primary-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .extension-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.extension-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.extension-name {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-weight: 600;
+  color: var(--primary-light);
+  font-size: 0.9375rem;
+}
+
+.extension-count {
+  font-family: 'SF Mono', Monaco, monospace;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.extension-bar-container {
+  height: 6px;
+  background-color: var(--bg-tertiary);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.extension-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.extension-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.extension-percentage {
+  color: var(--text-muted);
+}
+
+.extension-size {
+  font-family: 'SF Mono', Monaco, monospace;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+  .extensions-grid {
+    grid-template-columns: 1fr;
+  }
+}

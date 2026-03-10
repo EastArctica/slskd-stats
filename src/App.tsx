@@ -12,7 +12,7 @@ import "./App.css";
 
 export default function App() {
 	const [isDragging, setIsDragging] = useState(false);
-	const { isLoading, error, result, fileName, analyzeDatabase, reset } =
+	const { isLoading, error, result, analyzeDatabase, reset } =
 		useDatabaseAnalysis();
 
 	const handleFileSelect = (file: File) => {
@@ -29,7 +29,7 @@ export default function App() {
 
 	return (
 		<div className="app">
-			<Header />
+			<Header compact={!!result} onNewAnalysis={result ? handleAnalyzeAnother : undefined} />
 
 			<main className="main">
 				{!result && !isLoading && (
@@ -44,13 +44,7 @@ export default function App() {
 
 				{error && <ErrorMessage message={error} onRetry={handleRetry} />}
 
-				{result && (
-					<Results
-						result={result}
-						fileName={fileName}
-						onAnalyzeAnother={handleAnalyzeAnother}
-					/>
-				)}
+				{result && <Results result={result} />}
 			</main>
 
 			<Footer />
